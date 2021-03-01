@@ -1,0 +1,2792 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="cache-control" content="public" />
+    <link rel="icon" type="image/png" href="./index_files/favicon.png" />
+    <script>
+      var months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ],
+        days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        // EDIT TIME HERE IF YOU WISH TO UPDATE TIME OF THE COMMENTS, PLEASE BE CAREFULL TO LEAVE EXACT SAME STRUCTURE (EDIT BETWEEN "")
+        time = [
+          "12:01 am",
+          "2:24 pm",
+          "11:55 am",
+          "8:47 am",
+          "6:16 pm",
+          "4:16 pm",
+          "6:48 pm",
+          "17:07",
+        ],
+        d = new Date(),
+        dateNow =
+          months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+      /*
+        if (window.location.search.match(/(\?|&)c1\=([^&]*)/) !== null){
+         var c1 = decodeURIComponent(window.location.search.match(/(\?|&)c1\=([^&]*)/)[2]).replace(/(\+|%20)/g, ' ');
+         document.title = "Survey Rewards";
+        } */
+    </script>
+    <title>Survey Rewards</title>
+    <script>
+      function socle() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <script src="./index_files/jquery-1.11.1.min.js.download"></script>
+    <script src="./index_files/bootstrap.min.js.download"></script>
+    <style>
+      .container,
+      body {
+        background-color: #eee;
+      }
+
+      #message-page img,
+      header img,
+      header span {
+        vertical-align: middle;
+      }
+
+      .question,
+      body {
+        font-family: sans-serif;
+        margin: 0 auto;
+      }
+
+      #message-page,
+      #message-page img,
+      .container,
+      .content,
+      .question,
+      body {
+        margin: 0 auto;
+      }
+
+      .cursor,
+      .modal-footer button,
+      .reward,
+      .reward button {
+        cursor: pointer;
+      }
+
+      html {
+        line-height: 23px !important;
+      }
+
+      body {
+        font-size: 16px;
+        padding-top: 10px;
+      }
+
+      .content {
+        max-width: 800px;
+        width: 96%;
+      }
+
+      #message-page,
+      header {
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+      }
+
+      .container {
+        max-width: 840px;
+      }
+
+      header {
+        background-color: #ffffff;
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+
+      #message-page,
+      .choices {
+        background-color: #fff;
+        border-bottom: 1px solid #e5e5e5;
+        box-shadow: 0 0 2px 2px #d2d2d2;
+      }
+
+      header span {
+        display: inline-block;
+        color: #000;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 42px;
+      }
+
+      .center-align {
+        text-align: center;
+      }
+
+      #message-page {
+        padding: 10px 0 30px;
+        border-radius: 3px;
+      }
+
+      #message-page img {
+        padding: 20px 30px;
+      }
+
+      #message-page .message {
+        display: inline-block;
+        vertical-align: middle;
+        width: 73%;
+        margin: 0 auto;
+        text-align: left;
+        font-size: 18px;
+      }
+
+      #message-page.load {
+        padding: 20px 0;
+        color: green;
+        font-size: 24px;
+        width: 100%;
+        text-align: center;
+      }
+
+      #message-page.complete {
+        padding: 20px;
+        width: auto;
+        text-align: left;
+      }
+
+      img.circle {
+        border-radius: 50%;
+      }
+
+      .question {
+        font-size: 20px;
+        line-height: 22px;
+        font-weight: 300;
+        padding-top: 15px;
+        text-align: center;
+        width: 75%;
+        padding-bottom: 10px;
+      }
+
+      .choices {
+        margin-top: 15px;
+        display: block;
+        width: 100%;
+        padding: 10px 0 30px;
+        border-radius: 3px;
+      }
+
+      .choices p {
+        min-width: 200px;
+        width: 75%;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .choices .answerOption,
+      .footer,
+      .image-wrapper,
+      .loading,
+      .right-wrapper {
+        text-align: center;
+      }
+
+      .choices input {
+        // display: none
+      }
+
+      .author,
+      .author b,
+      .f-comments,
+      .f-comments .row {
+        display: inline-block;
+      }
+
+      .dcinput {
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
+
+      .choices .answerOption {
+        width: 90%;
+        padding: 10px 5%;
+        display: inline-block;
+        margin: 5px 0;
+        font-size: 18px;
+        font-weight: bold;
+        border: 1px solid;
+        border-top-color: currentcolor;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-left-color: currentcolor;
+        border-color: #d42029;
+        border-radius: 22px;
+        box-shadow: none;
+        background-color: #d42029;
+        color: white;
+      }
+
+      .comment-page,
+      .reward,
+      .validate {
+        border-bottom: 1px solid #e5e5e5;
+        box-shadow: 0 0 2px 2px #d2d2d2;
+        border-radius: 3px;
+      }
+
+      .copyright {
+        margin: 2px 2px 0;
+      }
+
+      .divider {
+        height: 15px;
+      }
+
+      .comment-page {
+        width: 100%;
+        background-color: #fff;
+        padding: 0;
+      }
+
+      .comment-page .wrapper {
+        max-width: 800px;
+        width: 96%;
+        margin: 0 auto;
+      }
+
+      .comment-page .wrapper h2 {
+        margin-top: 0;
+        font-size: 1.2em;
+        font-weight: 300;
+        padding: 20px 0 5px;
+      }
+
+      .f-comments {
+        background-color: #000;
+        color: #fff;
+        padding: 1% 5% 15px;
+        font-size: 12px;
+        width: 90%;
+        margin-top: 20px;
+      }
+
+      .f-comments .row {
+        width: 49%;
+      }
+
+      blockquote {
+        margin: 1.5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 10px;
+        border-radius: 3px;
+      }
+
+      blockquote:before {
+        color: #fff;
+        content: '"';
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+      }
+
+      .author b,
+      .author img {
+        vertical-align: middle;
+      }
+
+      .author b {
+        margin-left: 5px;
+      }
+      /* @media only screen and (max-width: 380px) and (min-width: 321x) {
+        #message-page.complete {
+          width: 89% !important;
+        }
+      } */
+      @media only screen and (max-width: 480px) and (min-width: 380px) {
+        #message-page.complete {
+          width: 90% !important;
+        }
+      }
+      @media only screen and (max-width: 380px) and (min-width: 321px) {
+        #message-page.complete {
+          width: 89% !important;
+        }
+      }
+      @media only screen and (max-width: 320px) {
+        #message-page.complete {
+          width: 87% !important;
+        }
+      }
+      .footer {
+        font-size: 13px;
+        background: #fff;
+        border-bottom: 1px solid #e5e5e5;
+        box-shadow: 0 0 2px 2px #d2d2d2;
+        border-radius: 3px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .comment,
+      .comment .desc,
+      .comment-img,
+      .image-wrapper,
+      .right-wrapper {
+        display: inline-block;
+      }
+
+      .validate {
+        width: 100%;
+        margin-bottom: 15px;
+        background-color: #fff;
+        padding: 0;
+      }
+
+      .claim {
+        font-size: 10px;
+        color: black;
+        line-height: 1.2;
+        padding: 0 10px 10px 10px;
+      }
+
+      .comment-img {
+        border-radius: 50%;
+      }
+
+      .validate .wrapper {
+        max-width: 800px;
+        width: 96%;
+        margin: 0 auto;
+      }
+
+      #szlider {
+        width: 100%;
+        height: 4px;
+        overflow: hidden;
+        background: #efefef;
+      }
+
+      #szliderbar {
+        width: 0;
+        height: 4px;
+        background: #fc9a18;
+      }
+
+      #szazalek {
+        color: #313c45;
+        font-size: small;
+      }
+
+      .reward {
+        margin-bottom: 10px;
+        background-color: #fff;
+        padding: 10px 6px;
+        overflow: hidden;
+        position: relative;
+        width: auto;
+      }
+
+      .reward:hover {
+        background-color: #ccc;
+      }
+
+      .reward .description,
+      .reward .image,
+      .reward button {
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .image-wrapper {
+        float: left;
+        box-sizing: border-box;
+        width: 49%;
+      }
+
+      .right-wrapper {
+        width: 50%;
+      }
+
+      .reward .description b {
+        color: #4485f6;
+        font-size: 15px;
+      }
+
+      .reward .description .quantity {
+        color: red;
+      }
+
+      .reward .image img {
+        margin-top: 7px;
+      }
+     #main_image
+     {
+      width:10em;
+      height:10em;
+      }
+
+      .rating {
+        width: 80px;
+      }
+
+      .reward .description {
+        vertical-align: top;
+        text-align: left;
+        width: 97%;
+        padding-bottom: 20px;
+        font-size: 15px;
+        line-height: 1.3;
+      }
+
+      .rating-text {
+        color: #627aad;
+      }
+
+      .reward button {
+        width: 100%;
+        color: white !important;
+        border: 1px solid #fff;
+        text-align: center;
+        font-size: 18px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 2rem;
+        text-transform: uppercase;
+        background: #d42029;
+        border-radius: 3px;
+      }
+
+      .comment {
+        display: inline-block;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+        padding: 2% 5%;
+        width: 90%;
+      }
+
+      .blue-text {
+        color: #627aad;
+      }
+
+      .gray-text {
+        padding-top: 5px;
+        color: #888a89;
+        font-size: 10px;
+      }
+
+      .comment-img {
+        vertical-align: top;
+        display: inline-block;
+        border: 2px solid #ccc;
+      }
+
+      .comment .desc {
+        width: 85%;
+        margin-left: 5%;
+        vertical-align: top;
+      }
+
+      .comment .desc p {
+        margin-top: 2px;
+        margin-bottom: 2px;
+        font-size: 14px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: #000;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        width: 50%;
+        text-align: left;
+        color: #000;
+        font-weight: 300;
+        font-size: 16px;
+        position: relative;
+        line-height: 24px;
+        border: 1px solid #000;
+      }
+
+      .modal-content p {
+        padding: 10px;
+      }
+
+      .modal-content p audio {
+        width: 230px;
+      }
+
+      .modal-header {
+        background-color: #000;
+        padding: 5px;
+        color: #fff;
+        font-weight: 400;
+        font-size: 1.64rem;
+        line-height: 110%;
+      }
+
+      .modal-header span {
+        margin-top: 5px;
+        float: left;
+      }
+
+      .modal-header img {
+        width: 55px;
+        float: right;
+        border: 1px solid #fff;
+      }
+
+      .modal-footer {
+        background-color: #eee;
+        padding: 10px;
+        text-align: right;
+      }
+
+      .modal-footer button {
+        width: 100%;
+        padding: 10px 5%;
+        display: inline-block;
+        margin: 5px 0;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        border: 1px solid;
+        border-top-color: currentcolor;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-left-color: currentcolor;
+        border-color: #d42029;
+        border-radius: 22px;
+        box-shadow: none;
+        background-color: #d42029;
+        color: white;
+      }
+
+      .clear {
+        clear: both;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: 700;
+      }
+
+      .close:focus,
+      .close:hover {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: 1200px) {
+        .modal-content {
+          width: 60%;
+          margin: 25% auto;
+        }
+      }
+
+      @media only screen and (max-width: 1023px) {
+        #message-page img {
+          display: none;
+        }
+        .modal-content {
+          width: 75%;
+          margin: 25% auto;
+        }
+      }
+
+      @media only screen and (max-width: 768px) {
+        .image-wrapper {
+          float: none;
+          box-sizing: border-box;
+          width: 100%;
+        }
+        .right-wrapper {
+          width: 100%;
+        }
+        .reward .description {
+          text-align: center;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .question {
+          width: 95%;
+        }
+        #message-page .message {
+          width: 95%;
+          text-align: center;
+          margin-top: -20px;
+        }
+        .f-comments .row {
+          display: block;
+          width: 90%;
+          margin: 0 auto;
+        }
+        .reward .description {
+          display: block;
+          width: 65%;
+          text-align: left;
+          margin: 0 auto;
+        }
+        .comment .desc {
+          margin-left: 1%;
+          width: 75%;
+        }
+        header span {
+          font-size: 20px;
+        }
+        .modal-content {
+          width: 90%;
+          margin: 25% auto;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        .reward .description {
+          display: block;
+          width: 80%;
+          text-align: left;
+          margin: 0 auto;
+        }
+      }
+
+      .bigbtn .reward button {
+        color: white !important;
+        font-weight: normal;
+        font-size: 20px;
+        padding: 6px 2rem;
+        height: auto;
+        border: 1px solid;
+        border-color: #d42029;
+        background: #d42029;
+      }
+
+      .bigbtn .reward {
+        background-color: #fff;
+        cursor: default;
+      }
+
+      .bigbtn .reward .description b {
+        color: #333;
+        font-size: 16px;
+      }
+
+      .bigbtn .reward .description i {
+        font-size: 14px;
+      }
+
+      .bigbtn .reward:hover {
+        background-color: #fff;
+      }
+
+      .outofstock {
+        cursor: default;
+        opacity: 0.5;
+      }
+
+      .outofstock:hover {
+        background-color: #fff;
+      }
+
+      .modal-content {
+        margin: 0;
+        width: 100%;
+        border: none;
+      }
+
+      .modal-header {
+        background-color: #fff;
+        color: #000;
+      }
+
+      .choices {
+        border: none;
+        box-shadow: none;
+      }
+
+      .modal-footer {
+        background-color: #fff;
+      }
+
+      body {
+        padding: 0px;
+      }
+
+      #giftgahog {
+        display: none;
+      }
+
+      #origahog {
+        display: block;
+      }
+
+      #message-page img {
+        float: right;
+      }
+
+      #message-page .message {
+        float: left;
+        padding-left: 20px;
+      }
+
+      @media only screen and (max-width: 1023px) {
+        #giftgahog {
+          display: block;
+          text-align: center;
+        }
+        #origahog {
+          display: none;
+        }
+        #message-page img {
+          display: block;
+          float: none;
+        }
+        #message-page .message {
+          text-align: center;
+          float: none;
+          padding: 0px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bigbtn">
+    <div
+      style="
+        text-align: center;
+        height: auto;
+        padding: 5px 0;
+        width: 100%;
+        background: ;
+        color: #d42029;
+        font-weight: normal;
+        font-size: 20px;
+        font-family: Tahoma, Geneva, sans-serif;
+        letter-spacing: 0.5px;
+      "
+    >
+      ★ EXCLUSIVE REWARDS ★
+    </div>
+    <header style="border-bottom: #ccc 1px solid; margin-bottom: 14px">
+      <!--- <img src="/images/log/verizon.png" style="width:180px;">-->
+      <div
+        style="
+          text-align: center;
+          height: auto;
+          padding: 5px 0;
+          width: 100%;
+          background: ;
+          color: #d42029;
+          font-weight: normal;
+          font-size: 50px;
+          font-family: Tahoma, Geneva, sans-serif;
+          letter-spacing: 0.5px;
+        "
+      >
+        Verizon
+      </div>
+      <br />
+      <span
+        style="
+          font-size: 15px;
+          font-weight: bold;
+          line-height: 27px;
+          display: inline-block;
+        "
+      >
+        <script type="text/javascript">
+          document.write(dateNow);
+        </script>
+      </span>
+      <img
+        src="./index_files/5278932c0d1f56748a044bab825d94b2.png"
+        alt="img"
+        style="width: 20px; display: inline-block; vertical-align: middle"
+      />
+    </header>
+    <div class="container">
+      <div class="content">
+        <div id="message-page" class="" style="">
+          <div class="modal-content" id="modal-content">
+            <div id="origahog">
+              <img
+                style="padding-left: 0px"
+                alt="image"
+                class="circle"
+                src="./index_files/gift.png"
+              />
+              <span class="message">
+                <br />
+                Complete this short 30-second survey about your experience with
+                <span class="blue-text">Verizon </span> to select one of our
+                exclusive reward offers <b>(minimum value $90).</b>
+                <br />
+                <br />This offer is available for today only:
+                <b>
+                  <script type="text/javascript">
+                    document.write(dateNow);
+                  </script></b
+                >
+              </span>
+            </div>
+            <div id="giftgahog">
+              <img
+                alt="image"
+                src="./index_files/gift.png"
+                style="width: 50px; height: 50px"
+              />
+              <span class="message">
+                <br />Attention Verizon Subscriber, Complete this short
+                30-second survey about your experience with<span
+                  class="blue-text"
+                >
+                  Verizon
+                </span>
+                to select one of our exclusive reward offers
+                <b>(minimum value $90).</b>
+                <br />
+                <br />This offer is available for today only:
+                <b
+                  ><script>
+                    document.write(dateNow);
+                  </script></b
+                >
+              </span>
+            </div>
+            <div class="modal-footer">
+              <button class="continue">Take Survey Now</button>
+            </div>
+          </div>
+          <div class="choices" style="display: none">
+            <div id="question-1" class="question">
+              <span class="q">How long have you had Verizon service?</span>
+              <input type="hidden" class="total-q" value="" />
+            </div>
+            <p id="answers-1" class="">
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(1,2)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(1,2)"
+                >Less than one year</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(1,2)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(1,2)"
+                >More than one year</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(1,2)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(1,2)"
+                >Don't have Verizon service</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(1,2)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(1,2)"
+                >Not Sure</span
+              >
+              <br />
+            </p>
+            <div id="question-2" class="question hidden">
+              <span class="q"
+                >How would you rate the reliability of Verizon services?</span
+              >
+              <input type="hidden" class="total-q" value="" />
+            </div>
+            <p id="answers-2" class="hidden">
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(2,3)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(2,3)"
+                >Excellent</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(2,3)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(2,3)"
+                >Good</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(2,3)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(2,3)"
+                >Average</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(2,3)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(2,3)"
+                >Poor</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(2,3)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(2,3)"
+                >Not Sure</span
+              >
+              <br />
+            </p>
+            <div id="question-3" class="question hidden">
+              <span class="q"
+                >Are you currently using your cell/mobile phone to complete this
+                survey?</span
+              >
+              <input type="hidden" class="total-q" value="" />
+            </div>
+            <p id="answers-3" class="hidden">
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(3,4)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(3,4)"
+                >Yes</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(3,4)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(3,4)"
+                >No</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(3,4)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(3,4)"
+                >Not Sure</span
+              >
+              <br />
+            </p>
+            <div id="question-4" class="question hidden">
+              <span class="q"
+                >Do you feel that Verizon customer service reps are friendly and
+                efficient?</span
+              >
+              <input type="hidden" class="total-q" value="" />
+            </div>
+            <p id="answers-4" class="hidden">
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(4,5)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(4,5)"
+                >Yes</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(4,5)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(4,5)"
+                >No</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(4,5)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(4,5)"
+                >Not Applicable</span
+              >
+              <br />
+            </p>
+            <div id="question-5" class="question hidden">
+              <span class="q"
+                >How would you rate Verizon's <u>customer service</u>?</span
+              >
+              <input type="hidden" class="total-q" value="" />
+            </div>
+            <p id="answers-5" class="hidden">
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(5,6)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(5,6)"
+                >Excellent</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(5,6)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(5,6)"
+                >Good</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(5,6)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(5,6)"
+                >Average</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(5,6)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(5,6)"
+                >Poor</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(5,6)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(5,6)"
+                >Not Sure</span
+              >
+              <br />
+            </p>
+            <div id="question-6" class="question hidden">
+              <span class="q"
+                >How satisfied are you with your <u>overall experience</u> using
+                Verizon?</span
+              >
+              <input type="hidden" class="total-q" value="" />
+            </div>
+            <p id="answers-6" class="hidden">
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(6,7)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(6,7)"
+                >Very satisfied</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(6,7)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(6,7)"
+                >Somewhat satisfied</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(6,7)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(6,7)"
+                >Neither satisfied nor dissatified
+              </span>
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(6,7)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(6,7)"
+                >Somewhat dissatified</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(6,7)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(6,7)"
+                >Very dissatified</span
+              >
+              <br />
+            </p>
+            <div id="question-7" class="question hidden">
+              <span class="q">Do you feel Verizon offers good value?</span>
+              <input type="hidden" class="total-q" value="" />
+            </div>
+            <p id="answers-7" class="hidden">
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(7,8)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(7,8)"
+                >Yes</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(7,8)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(7,8)"
+                >No</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(7,8)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(7,8)"
+                >Not Sure</span
+              >
+              <br />
+            </p>
+            <div id="question-8" class="question hidden">
+              <span class="q"
+                >Would you recommend Verizon to friends and family?</span
+              >
+              <input type="hidden" class="total-q" value="" />
+            </div>
+            <p id="answers-8" class="hidden">
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(8,9)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(8,9)"
+                >Yes</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(8,9)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(8,9)"
+                >No</span
+              >
+              <br />
+              <input
+                type="radio"
+                style="display: none"
+                name="answer"
+                onclick="nextQuestion(8,9)"
+                value="1"
+              />
+              <span class="cursor answerOption" onclick="nextQuestion(8,9)"
+                >Not Sure</span
+              >
+              <br />
+            </p>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="validate wrapper hidden">
+          <div class="wrapper">
+            <br />
+            <table width="100%">
+              <tbody>
+                <tr>
+                  <td align="left">
+                    <p id="v1b">Submitting answers..</p>
+                    <p id="v2b">Checking for duplicate IP addresses...</p>
+                    <p id="v3b">Checking our inventory for products...</p>
+                    <p id="vfinal">Congratulations!</p>
+                  </td>
+                  <td align="right"><span id="szazalek">0%</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="width: 100%; margin: 0px auto; margin: 10px 0">
+              <div id="szlider">
+                <div id="szliderbar"></div>
+                <div id="szazalek"></div>
+              </div>
+            </div>
+            <table>
+              <tbody>
+                <tr>
+                  <td width="40px">
+                    <img id="v1a" src="./index_files/spinner.png" />
+                    <img
+                      id="v1c"
+                      src="./index_files/check.jpeg"
+                      class="hidden"
+                    />
+                  </td>
+                  <td>
+                    <p id="v1d">Answers submitted</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img id="v2a" src="./index_files/spinner.png" />
+                    <img
+                      id="v2c"
+                      src="./index_files/check.jpeg"
+                      class="hidden"
+                    />
+                  </td>
+                  <td>
+                    <p id="v2d">IP address check</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img id="v3a" src="./index_files/spinner.png" />
+                    <img
+                      id="v3c"
+                      src="./index_files/check.jpeg"
+                      class="hidden"
+                    />
+                  </td>
+
+                  <td>
+                    <p id="v3d">Products available in stock</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+          </div>
+        </div>
+        <!-- ALL PRODUCTS ARE LISTED HERE -->
+        <div class="reward-page hidden" id="product-list" style="display: none">
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/earpods-sq2.jpg"
+                  alt="reward"
+                  id="main_image"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=3159'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(1049)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b>Top Brand Wireless Headphones©</b>
+                <br />
+                <i>2-3 Hours of playing time - Only 30 min to full charge!</i>
+                <br /><br />
+                <del style="color: red">Reg Price $159.00</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$9.99</span><br />
+                Left in Stock: <font color="red">5</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=3159'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/4f136656-8fed-49dd-944a-45b710c6dc3f"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/dashcam.png"
+                  alt="reward"
+id="main_image"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=5099'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(1060)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b
+                  >Dash-Cam X300© with Night-Vision + Motion Detection and
+                  Built-In LCD</b
+                >
+                <br />
+                <i
+                  >Your eyes for everything that occurs on the road. Protect
+                  yourself and reduce your insurance premium today!</i
+                >
+                <br /><br />
+                <del style="color: red">Reg Price $119.99</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$4.95</span><br />
+                Left in Stock: <font color="red">4</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=5099'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/1b25bc3c-9beb-490d-a251-003581144508"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <!--div class="reward ">
+                    <div class="image-wrapper">
+                        <div class="image">
+                            <img src="./index_files/sportcam.jpg" id="main_image" alt="reward" width="250" onclick="top.location.href='%LINK%'"><br>
+                            <img class="rating" src="./index_files/stars-survey.png"><span class="rating-text">(1257)</span>
+                        </div>
+                    </div>
+                    <div class="right-wrapper">
+                        <div class="description">
+                            <b>Tactical Sports Camera - Waterproof With 2-inch LCD</b>
+                            <br>
+                            <i>1080P, 90 Minute Rechargeable Battery, Records Audio and Video up to 96ft depth!</i>
+                            <br><br>
+                            <del style="color:red;">Reg Price $349.98</del> &nbsp;
+                            <font color="green" style="font-weight: bold;font-size: 18px;">$14.95 for S&amp;H</font><br> Shipping: <span class="ship-cost">$14.95</span><br> Left in Stock:
+                            <font color="red">1</font><br>
+                        </div>
+                        <button onclick="top.location.href='%LINK%'"><img src="./index_files/cart-survey.png" style="width: 23px;"> CLAIM REWARD</button>
+                        <img src="./index_files/607cc03a-0205-469a-9e71-bf8d9ef60ada" alt="" height="0.1" width="0.1">
+                    </div>
+                </div-->
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/watches2020.png"
+                  alt="reward"
+id="main_image"
+                  width="auto"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7809'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(955)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b
+                  >Brand New February 2021 Designer Watches for Men and Women</b
+                >
+                <br />
+                <i
+                  >Quality Swiss watches for him or her - The perfect
+                  present!</i
+                >
+                <br /><br />
+                <del style="color: red">Reg Price $109.95</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$5.95</span><br />
+                Left in Stock: <font color="red">2</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7809'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/9544d662-8d8e-45d8-9648-5103f42999b1"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/keto-female.jpg"
+                  alt="reward"
+                  id="main_image"
+                  width="auto"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=6047'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(1323)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b>Keto Rapid Weight Loss Formula©</b>
+                <br />
+                <i
+                  >The new way to burn fat! Natural, safe & effective pure
+                  ketosis formula!</i
+                >
+                <br /><br />
+                <del style="color: red">Reg Price $289.95</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$4.95</span><br />
+                Left in Stock: <font color="red">1</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=6047'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/5d3155f3-4e1a-4334-b635-549b35c08d70"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/dermatin.png"
+                  alt="reward"
+                  id="main_image"
+                  
+                  width="auto"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=5946'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(1449)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b
+                  >Skin Revitalizer - Look 10 Years Younger! 30-Day Anti-Aging
+                  Skin Cream™</b
+                >
+                <br />
+                <i
+                  >The New Injection-Free Solution. Better Than Botox! Works
+                  naturally to help reverse wrinkles, replenish your skin’s
+                  moisture, firming its appearance and restoring your natural
+                  glow to reveal a younger-looking you.</i
+                >
+                <br /><br />
+                <del style="color: red">Reg Price $129.99</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$4.95</span><br />
+                Left in Stock: <font color="red">2</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=5946"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/1f5cff04-c902-49a8-bf52-79099958b9c0"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/fitbit2020.jpg"
+                  alt="reward"
+                  width="250"
+                  id="main_image"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7188'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(1438)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b>Fitness Tracker© Heart + Sleep Monitor!</b>
+                <br />
+                <i>Activity Logging, OLED Screen, Sleep monitor</i>
+                <br /><br />
+                <del style="color: red">Reg Price $79.95</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$8.95</span><br />
+                Left in Stock: <font color="red">3</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7188'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/70a632ae-94bc-40a0-8bf4-078bb8ade0f1"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/flashlight2.png"
+                  alt="reward"
+                  id="main_image"
+                  width="250"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7446'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(974)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b>#1 Navy Seal Tactical Flashlight</b>
+                <br />
+                <i
+                  >World's Brightest, Most Powerful &amp; Rugged Tactical LED
+                  Flashlight!</i
+                >
+                <br /><br />
+                <del style="color: red">Reg Price $49.95</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$8.95</span><br />
+                Left in Stock: <font color="red">2</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7446'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/5975c950-d5a5-48b2-838e-73053b81e167"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/cbd-twobottles.jpg"
+                  alt="reward"
+                  id="main_image"
+                  width="250"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=8975'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(1193)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b>Full-leaf CBD Hemp Oil™ Stress Formula</b>
+                <br />
+                <i
+                  >300mg Full Spectrum CBD. Reduces Blood Sugar,
+                  Antibacterial.</i
+                >
+                <br /><br />
+                <del style="color: red">Reg Price $74.99</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$0.00 </span><br />
+                Left in Stock: <font color="red">2</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=8975'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/f8ce309c-1170-4fe3-9ed7-2402ad1009d9"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <!--div class="reward ">
+                    <div class="image-wrapper">
+                        <div class="image">
+                            <img src="./index_files/spycam.jpg" id="main_image" alt="reward" width="250" onclick="top.location.href='%LINK%'"><br>
+                            <img class="rating" src="./index_files/stars-survey.png"><span class="rating-text">(1407)</span>
+                        </div>
+                    </div>
+                    <div class="right-wrapper">
+                        <div class="description">
+                            <b>Spy Camera for Protection - Night Vision, Audio Recording, 12 Megapixels, Wide Angle</b>
+                            <br>
+                            <i>Small &amp; Discrete Spy Camera with Motion Detection Includes Wall Mount and Alligator Clips</i>
+                            <br><br>
+                            <del style="color:red;">Reg Price $68.50</del> &nbsp;
+                            <font color="green" style="font-weight: bold;font-size: 18px;">$14.95 for S&amp;H</font><br> Shipping: <span class="ship-cost">$0.00</span><br> Left in Stock:
+                            <font color="red">3</font><br>
+                        </div>
+                        <button onclick="top.location.href='%LINK%'"><img src="./index_files/cart-survey.png" style="width: 23px;"> CLAIM REWARD</button>
+                        <img src="./index_files/04b46ba4-c943-4c4f-ba22-c705c65efc9e" alt="" height="0.1" width="0.1">
+                    </div>
+                </div-->
+
+          <!--div class="reward ">
+                    <div class="image-wrapper">
+                        <div class="image">
+                            <img src="./index_files/hair2021.jpg" id="main_image" alt="reward" width="250" onclick="top.location.href='%LINK%'"><br>
+                            <img class="rating" src="./index_files/stars-survey.png"><span class="rating-text">(606)</span>
+                        </div>
+                    </div>
+                    <div class="right-wrapper">
+                        <div class="description">
+                            <b>Rezola© Hair Regrowth Formula for Women</b>
+                            <br>
+                            <i>Regrow Thicker, Longer, Stronger Hair - Complete System – 30 Day Supply</i>
+                            <br><br>
+                            <del style="color:red;">Reg Price $169.95</del> &nbsp;
+                            <font color="green" style="font-weight: bold;font-size: 18px;">$0.00 - Pay Only S&amp;H</font><br> Shipping: <span class="ship-cost">$4.95</span><br> Left in Stock:
+                            <font color="red">3</font><br>
+                        </div>
+                        <button onclick="top.location.href='%LINK%'"><img src="./index_files/cart-survey.png" style="width: 23px;"> CLAIM REWARD</button>
+                        <img src="./index_files/a1146a62-3c40-4378-95bc-ef3a055fcf5e" alt="" height="0.1" width="0.1">
+                    </div>
+                </div-->
+
+          <!--div class="reward ">
+                    <div class="image-wrapper">
+                        <div class="image">
+                            <img src="./index_files/jewelry-2020.jpg" id="main_image" alt="reward" width="250"><br>
+                            <img class="rating" src="./index_files/stars-survey.png"><span class="rating-text">(805)</span>
+                        </div>
+                    </div>
+                    <div class="right-wrapper">
+                        <div class="description">
+                            <b>Jewelry Icons - High Fashion Designer Articles</b>
+                            <br>
+                            <i>Four 2021 Styles for Men &amp; Women</i>
+                            <br><br>
+                            <del style="color:red;">Reg Price $95.99</del> &nbsp;
+                            <font color="green" style="font-weight: bold;font-size: 18px;">$0.00 - Pay Only S&amp;H</font><br> Shipping: <span class="ship-cost">$6.99</span><br> Left in Stock:
+                            <font color="red">5</font><br>
+                        </div>
+                        <button onclick="top.location.href='%LINK%'"><img src="./index_files/cart-survey.png" style="width: 23px;"> CLAIM REWARD</button>
+                        <img src="./index_files/62bbb369-0f97-4274-91bc-b3120a20fc36" alt="" height="0.1" width="0.1">
+                    </div>
+                </div-->
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/keto-male.png"
+                  alt="reward"
+                  id="main_image"
+                  width="250"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7230'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(783)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b>Pure Keto Male Formula©</b>
+                <br />
+                <i
+                  >The miracle pill to burn fat fast! Lose weight without diet
+                  or exercise!</i
+                >
+                <br /><br />
+                <del style="color: red">Reg Price $139.95</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$4.95</span><br />
+                Left in Stock: <font color="red">1</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7230'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/4c44cf94-c08a-49d6-ae3c-f6bb3674a6bd"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/brain-2020-cogni.jpg"
+                  alt="reward"
+                  id="main_image"
+                  width="250"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7046'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(1059)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b>Brain Booster© Natural Focus Enhancer</b>
+                <br />
+                <i>Clears Your Mind For Optimum Mental Absorption!</i>
+                <br /><br />
+                <del style="color: red">Reg Price $89.99</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$4.95</span><br />
+                Left in Stock: <font color="red">2</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7046'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/0c85b777-37b8-4da7-bb9e-ca8878fe3ce8"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <!--div class="reward ">
+                    <div class="image-wrapper">
+                        <div class="image">
+                            <img src="./index_files/creditscore-hd.png" alt="reward" width="250" onclick="top.location.href='%LINK%'"><br>
+                            <img class="rating" src="./index_files/stars-survey.png"><span class="rating-text">(1110)</span>
+                        </div>
+                    </div>
+                    <div class="right-wrapper">
+                        <div class="description">
+                            <b>Free Credit Score With Monitoring in 60 Seconds</b>
+                            <br>
+                            <i>Low Scores Hurt You. What is Your Score Today?</i>
+                            <br><br>
+                            <del style="color:red;">Reg Price $39.90</del> &nbsp;
+                            <font color="green" style="font-weight: bold;font-size: 18px;">$0.00</font><br> Shipping: <span class="ship-cost">$0.00</span><br> Left in Stock:
+                            <font color="red">5</font><br>
+                        </div>
+                        <button onclick="top.location.href='%LINK%'"><img src="./index_files/cart-survey.png" style="width: 23px;"> CLAIM REWARD</button>
+                        <img src="./index_files/dbaf51a9-74c5-4472-95d9-e12d7a5f7bdb" alt="" height="0.1" width="0.1">
+                    </div>
+                </div-->
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/male-enhance-young.jpg"
+                  alt="reward"
+                  id="main_image"
+                  width="250"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7786'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(821)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b>Sex Enhancer™ Formula - Boost Sex Drive and Blood Flow!</b>
+                <br />
+                <i>Harder Erections, More Stamina and Energy!</i>
+                <br /><br />
+                <del style="color: red">Reg Price $110.95</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$4.95</span><br />
+                Left in Stock: <font color="red">3</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7786'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/f879fb52-be04-47b9-9f1e-ac684d08c58e"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <div class="reward">
+            <div class="image-wrapper">
+              <div class="image">
+                <img
+                  src="./index_files/male-enhance.jpg"
+                  id="main_image"
+                  alt="reward"
+                  width="250"
+                  onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7786'"
+                /><br />
+                <img class="rating" src="./index_files/stars-survey.png" /><span
+                  class="rating-text"
+                  >(846)</span
+                >
+              </div>
+            </div>
+            <div class="right-wrapper">
+              <div class="description">
+                <b
+                  >Advanced™ Male ENHANCEMENT Formula - Celebrity Performance
+                  Secret!</b
+                >
+                <br />
+                <i
+                  >Medical Strength Specially Formulated Male Enhancement Pills
+                  To Help You Get Bigger &amp; Last Longer!</i
+                >
+                <br /><br />
+                <del style="color: red">Reg Price $113.69</del> &nbsp;
+                <font color="green" style="font-weight: bold; font-size: 18px"
+                  >$0.00 - Pay Only S&amp;H</font
+                ><br />
+                Shipping: <span class="ship-cost">$4.95</span><br />
+                Left in Stock: <font color="red">3</font><br />
+              </div>
+              <button
+                onclick="top.location.href='https://crowntrkr.com/path/out.php?b=7786'"
+              >
+                <img src="./index_files/cart-survey.png" style="width: 23px" />
+                CLAIM REWARD
+              </button>
+              <img
+                src="./index_files/9ee87094-9c76-4944-a110-8a650f1f9b20"
+                alt=""
+                height="0.1"
+                width="0.1"
+              />
+            </div>
+          </div>
+
+          <!--div class="reward ">
+                    <div class="image-wrapper">
+                        <div class="image">
+                            <img src="./index_files/maleskin.jpg" id="main_image"alt="reward" width="250" onclick="top.location.href='%LINK%'"><br>
+                            <img class="rating" src="./index_files/stars-survey.png"><span class="rating-text">(737)</span>
+                        </div>
+                    </div>
+                    <div class="right-wrapper">
+                        <div class="description">
+                            <b>The #1 Men Skin Cream In The Country!</b>
+                            <br>
+                            <i>Perfect Present for Yourself or Your Husband/Boyfriend. Look Great In Just 2 Weeks!</i>
+                            <br><br>
+                            <del style="color:red;">Reg Price $97.99</del> &nbsp;
+                            <font color="green" style="font-weight: bold;font-size: 18px;">$4.95 for S&amp;H</font><br> Shipping: <span class="ship-cost">$4.95</span><br> Left in Stock:
+                            <font color="red">1</font><br>
+                        </div>
+                        <button onclick="top.location.href='%LINK%'"><img src="./index_files/cart-survey.png" style="width: 23px;"> CLAIM REWARD</button>
+                        <img src="./index_files/5db1992c-8fa7-4f5b-a956-5fd031a19480" alt="" height="0.1" width="0.1">
+                    </div>
+                </div-->
+        </div>
+        <div class="comment-page">
+          <!-- ALL COMMENTS ARE LISTE HERE -->
+          <div class="comment">
+            <!-- EDIT SRC ATTRIBUTE WITH EXACT PATH AND IMAGE NAME TO REPLACE IT -->
+            <img
+              alt="image"
+              class="comment-img"
+              src="./index_files/1e6d83832acbb01290e1bfa1a8e8fb92.jpeg"
+            />
+            <div class="desc">
+              <!-- EDIT COMMENTER NAME HERE (EDIT CONTENT BETWEEN <B><B/> TAGS) -->
+              <span><b>Frank Taylor</b></span>
+              <!-- EDIT COMMENT HERE (EDIT CONTENT BETWEEN <P></P> TAGS) -->
+              <p>
+                I'm generally pretty 'meh' about doing surveys, but I thought
+                I'd give this one a shot. I have to say, it was really quick and
+                easy! I mean, within a few minutes and just a few simple
+                questions, you're giving me the option to choose between four
+                unbeatable gifts. I don't know how you do it, but I'm all in!
+                Thanks for the teeth whitener, my teeth look fantastic!
+              </p>
+              <!-- DO NOT EDIT HERE - DATE WILL BE APPENDED FROM JAVASCRIPT-->
+              <p class="gray-text f1-date">at 12:01 am</p>
+            </div>
+            <!-- DIT RULES EXPLAINED ON FIRST PRODUCT APPLIES TO ALL FOLLOWING COMMENTS -->
+          </div>
+          <div class="comment">
+            <!-- EDIT SRC ATTRIBUTE WITH EXACT PATH AND IMAGE NAME TO REPLACE IT -->
+            <img
+              alt="image"
+              class="comment-img"
+              src="./index_files/dfc8d9b89c6dddb687ed0ba468ef093d.jpeg"
+            />
+            <div class="desc">
+              <!-- EDIT COMMENTER NAME HERE (EDIT CONTENT BETWEEN <B><B/> TAGS) -->
+              <span><b>Emily Philips</b></span>
+              <!-- EDIT COMMENT HERE (EDIT CONTENT BETWEEN <P></P> TAGS) -->
+              <p>
+                The survey was quick and easy. I wouldn't mind doing another one
+                :)
+              </p>
+              <!-- DO NOT EDIT HERE - DATE WILL BE APPENDED FROM JAVASCRIPT-->
+              <p class="gray-text f2-date">February 18, 2021 at 2:24 pm</p>
+            </div>
+            <!-- DIT RULES EXPLAINED ON FIRST PRODUCT APPLIES TO ALL FOLLOWING COMMENTS -->
+          </div>
+          <div class="comment">
+            <!-- EDIT SRC ATTRIBUTE WITH EXACT PATH AND IMAGE NAME TO REPLACE IT -->
+            <img
+              alt="image"
+              class="comment-img"
+              src="./index_files/275a3c6d7250fc618c5f32e5bd565b9a.jpeg"
+            />
+            <div class="desc">
+              <!-- EDIT COMMENTER NAME HERE (EDIT CONTENT BETWEEN <B><B/> TAGS) -->
+              <span><b>Katie Webb</b></span>
+              <!-- EDIT COMMENT HERE (EDIT CONTENT BETWEEN <P></P> TAGS) -->
+              <p>
+                I had no use for the weight-loss product, and decided to give it
+                to my friend. And believe it or not- she lost like 14 pounds in
+                less than 2 weeks! Now I want the same one for myself!
+              </p>
+              <!-- DO NOT EDIT HERE - DATE WILL BE APPENDED FROM JAVASCRIPT-->
+              <p class="gray-text f3-date">February 16, 2021 at 11:55 am</p>
+            </div>
+            <!-- DIT RULES EXPLAINED ON FIRST PRODUCT APPLIES TO ALL FOLLOWING COMMENTS -->
+          </div>
+          <div class="comment">
+            <!-- EDIT SRC ATTRIBUTE WITH EXACT PATH AND IMAGE NAME TO REPLACE IT -->
+            <img
+              alt="image"
+              class="comment-img"
+              src="./index_files/9687746dd2c717af90e79afa47b8c92b.jpeg"
+            />
+            <div class="desc">
+              <!-- EDIT COMMENTER NAME HERE (EDIT CONTENT BETWEEN <B><B/> TAGS) -->
+              <span><b>Julia Stafford</b></span>
+              <!-- EDIT COMMENT HERE (EDIT CONTENT BETWEEN <P></P> TAGS) -->
+              <p>
+                I was bored so I did the survey, but I really liked the skin
+                care cream, it worked really well!
+              </p>
+              <!-- DO NOT EDIT HERE - DATE WILL BE APPENDED FROM JAVASCRIPT-->
+              <p class="gray-text f4-date">February 16, 2021 at 8:47 am</p>
+            </div>
+            <!-- DIT RULES EXPLAINED ON FIRST PRODUCT APPLIES TO ALL FOLLOWING COMMENTS -->
+          </div>
+          <div class="comment">
+            <!-- EDIT SRC ATTRIBUTE WITH EXACT PATH AND IMAGE NAME TO REPLACE IT -->
+            <img
+              alt="image"
+              class="comment-img"
+              src="./index_files/52480de1a60ed5f717a3f73abef62e13.jpeg"
+            />
+            <div class="desc">
+              <!-- EDIT COMMENTER NAME HERE (EDIT CONTENT BETWEEN <B><B/> TAGS) -->
+              <span><b>Thomas Harber</b></span>
+              <!-- EDIT COMMENT HERE (EDIT CONTENT BETWEEN <P></P> TAGS) -->
+              <p>
+                When your five question survey popped up I thought there was no
+                way the rewards were actually valued over $100. That's just
+                being honest. But then I got to the end and got to select it and
+                I thought, 'This is the greatest survey in the history of
+                surveys!' Seriously though, I don't know how the data you
+                collect helps you, or how you can afford to offer such great
+                products, but I'm happy to take them off your hands. Let me know
+                if you need another one done!
+              </p>
+              <!-- DO NOT EDIT HERE - DATE WILL BE APPENDED FROM JAVASCRIPT-->
+              <p class="gray-text f5-date">February 14, 2021 at 6:16 pm</p>
+            </div>
+            <!-- DIT RULES EXPLAINED ON FIRST PRODUCT APPLIES TO ALL FOLLOWING COMMENTS -->
+          </div>
+          <div class="comment">
+            <!-- EDIT SRC ATTRIBUTE WITH EXACT PATH AND IMAGE NAME TO REPLACE IT -->
+            <img
+              alt="image"
+              class="comment-img"
+              src="./index_files/13863e1661e2893d8bb6c5d912b2f59f.jpeg"
+            />
+            <div class="desc">
+              <!-- EDIT COMMENTER NAME HERE (EDIT CONTENT BETWEEN <B><B/> TAGS) -->
+              <span><b>Roger Wright</b></span>
+              <!-- EDIT COMMENT HERE (EDIT CONTENT BETWEEN <P></P> TAGS) -->
+              <p>
+                Alright, so like the other people here, I'm pretty shocked at
+                the choices given when you reach the end of that really short
+                survey. I guess I expected some half-eaten sandwich or used
+                dental floss, haha. Boy, was I wrong. You only asked me like a
+                handful of questions and then you let me choose an e-Cigs kit?
+                Looks like I got the far better end of this deal. Thanks for
+                making it so quick and easy!
+              </p>
+              <!-- DO NOT EDIT HERE - DATE WILL BE APPENDED FROM JAVASCRIPT-->
+              <p class="gray-text f6-date">February 13, 2021 at 4:16 pm</p>
+            </div>
+            <!-- DIT RULES EXPLAINED ON FIRST PRODUCT APPLIES TO ALL FOLLOWING COMMENTS -->
+          </div>
+          <div class="comment">
+            <!-- EDIT SRC ATTRIBUTE WITH EXACT PATH AND IMAGE NAME TO REPLACE IT -->
+            <img
+              alt="image"
+              class="comment-img"
+              src="./index_files/c8734e402669d30dc61702ea6c74bed3.jpeg"
+            />
+            <div class="desc">
+              <!-- EDIT COMMENTER NAME HERE (EDIT CONTENT BETWEEN <B><B/> TAGS) -->
+              <span><b>Liz Brown</b></span>
+              <!-- EDIT COMMENT HERE (EDIT CONTENT BETWEEN <P></P> TAGS) -->
+              <p>
+                I haven't taken a multiple choice test since college, so when I
+                saw the survey I had some flashbacks to my school days.
+                Thankfully it was only five easy questions. I was genuinely
+                impressed with the offers as well. When I've seen other surveys
+                on ecommerce sites they usually offer trinkets. These are real
+                products.
+              </p>
+              <!-- DO NOT EDIT HERE - DATE WILL BE APPENDED FROM JAVASCRIPT-->
+              <p class="gray-text f7-date">February 12, 2021 at 6:48 pm</p>
+            </div>
+            <!-- DIT RULES EXPLAINED ON FIRST PRODUCT APPLIES TO ALL FOLLOWING COMMENTS -->
+          </div>
+          <div class="comment">
+            <!-- EDIT SRC ATTRIBUTE WITH EXACT PATH AND IMAGE NAME TO REPLACE IT -->
+            <img
+              alt="image"
+              class="comment-img"
+              src="./index_files/0b3bc245a0c981a9acdd428fab1d725d.jpeg"
+            />
+            <div class="desc">
+              <!-- EDIT COMMENTER NAME HERE (EDIT CONTENT BETWEEN <B><B/> TAGS) -->
+              <span><b>Barbara Meier</b></span>
+              <!-- EDIT COMMENT HERE (EDIT CONTENT BETWEEN <P></P> TAGS) -->
+              <p>
+                All of the products looked great, but none of them really
+                applied to my current needs. What is a girl to do? Well, I
+                decided to order the eCigs to try and help a friend break her
+                smoking habit. So far, so good.
+              </p>
+              <!-- DO NOT EDIT HERE - DATE WILL BE APPENDED FROM JAVASCRIPT-->
+              <p class="gray-text f8-date">February 11, 2021 at 17:07</p>
+            </div>
+            <!-- DIT RULES EXPLAINED ON FIRST PRODUCT APPLIES TO ALL FOLLOWING COMMENTS -->
+          </div>
+        </div>
+        <div class="footer">
+          <img src="./index_files/credit-cards.png" alt="logo" />
+          <p class="copyright">Copyright © 2019</p>
+          <div class="claim">
+            THIS IS AN INDEPENDENT SURVEY. This website is not affiliated with
+            or endorsed by and does not claim to represent or own any of the
+            trademarks, trade names or rights associated with any of the
+            products which are the property of their respective owners who do
+            not own, endorse, or promote this website. *Trial products offered
+            on the last page require shipping and handling fees. See
+            manufacturer's site for details as terms vary with offers. See
+            important terms and conditions regarding this survey, site and
+            advertisement
+            <a href="" target="_BLANK"><u>privacy policy here</u></a
+            >. Important: Shipping costs may apply.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="how_was_survey_text_container" style="display: none">
+      <center>
+        Thank you for completing our survey!
+        <p style="color: black; font-size: 16px">
+          Due to high demand, rewards can only be guaranteed for 10 minutes<br />
+          Please select <b>only ONE (1) offer</b> below.<br />Special offer for
+          today only:
+          <b
+            ><script>
+              document.write(dateNow);
+            </script></b
+          ><br /><br />
+          <font color="#229A22"
+            >✓ Successfully redeemed coupon code <strong>SHOP2020</strong></font
+          >
+        </p>
+      </center>
+      <p></p>
+    </div>
+
+    <script>
+      function nextQuestion(current, next) {
+        console.log("next question: " + next);
+
+        document.getElementsByClassName("loading"), new Date();
+
+        var html = $("#how_was_survey_text_container").html();
+        //nqs_1 start
+        const totalQuestions = document.querySelectorAll(".total-q").length;
+
+        console.log(totalQuestions);
+
+        if (next > totalQuestions) {
+          const k = document.getElementById("message-page");
+
+          console.log("LOADING OFFERS");
+          (document.getElementsByClassName("question")[0].style.display =
+            "none"),
+            (document.getElementsByClassName("choices")[0].style.display =
+              "none"),
+            (document.getElementsByClassName("comment-page")[0].style.display =
+              "none"),
+            (document.getElementsByClassName("footer")[0].style.display =
+              "none"),
+            (k.className += " load"),
+            (k.innerHTML =
+              "<center>Please wait while we process your answers...</center>");
+
+          var o = document.querySelector(".validate");
+          (o.className = "validate"),
+            (document.querySelector("#v1a").style.display = "block"),
+            (document.querySelector("#v1b").style.display = "block"),
+            (document.querySelector("#v2b").style.display = "none"),
+            (document.querySelector("#v3b").style.display = "none"),
+            (document.querySelector("#vfinal").style.display = "none"),
+            drawszlider(10, 0),
+            setTimeout(function () {
+              (document.querySelector("#v1a").style.display = "none"),
+                (document.querySelector("#v1b").style.display = "none"),
+                (document.querySelector("#v1c").style.display = "block"),
+                (document.querySelector("#v1d").style.display = "block"),
+                (document.querySelector("#v2a").style.display = "block"),
+                (document.querySelector("#v2b").style.display = "block");
+            }, 2e3),
+            setTimeout(function () {
+              (document.querySelector("#v2a").style.display = "none"),
+                (document.querySelector("#v2b").style.display = "none"),
+                (document.querySelector("#v2c").style.display = "block"),
+                (document.querySelector("#v2d").style.display = "block"),
+                (document.querySelector("#v3a").style.display = "block"),
+                (document.querySelector("#v3b").style.display = "block");
+            }, 4500),
+            setTimeout(function () {
+              (document.querySelector("#v3a").style.display = "none"),
+                (document.querySelector("#v3b").style.display = "none"),
+                (document.querySelector("#v3c").style.display = "block"),
+                (document.querySelector("#v3d").style.display = "block"),
+                (document.querySelector("#vfinal").style.display = "block");
+            }, 6500),
+            setTimeout(function () {
+              (k.className += " complete"),
+                (k.innerHTML = html),
+                // k.innerHTML = "<center>Thank you for completing our survey!<p style='color:black;font-size:16px;'>Due to high participation today rewards can only be guaranteed for 10 minutes<br> Please select<b>only ONE (1) offer</b> below.<br>Special offer for today only: <b>October 8, 2020</b></font><br><br><font color ="#229A22">✓ Successfully redeemed coupon code <strong>TMOB20</strong></font></center></p>",
+                (document.getElementsByClassName(
+                  "reward-page"
+                )[0].style.display = "block"),
+                (document.getElementsByClassName(
+                  "comment-page"
+                )[0].style.display = "block"),
+                (document.getElementsByClassName("footer")[0].style.display =
+                  "block"),
+                (o.className = "hidden"),
+                (document.getElementById("message-page").style.width = "95%");
+            }, 7e3);
+        } else {
+          const $currentQuestion = document.getElementById(
+            `question-${current}`
+          );
+          const $nextQuestion = document.getElementById(`question-${next}`);
+          const $currentAnswers = document.getElementById(`answers-${current}`);
+          const $nextAnswers = document.getElementById(`answers-${next}`);
+
+          $currentQuestion.style.display = "none";
+          $currentAnswers.style.display = "none";
+          $nextQuestion.style.display = "block";
+          $nextAnswers.style.display = "block";
+        }
+      }
+
+      function drawszlider(a, b) {
+        var c = Math.round((100 * b) / a);
+        (document.getElementById("szliderbar").style.width = c + "%"),
+          (document.getElementById("szazalek").innerHTML = c + "%"),
+          (holvanszlider = b),
+          (t = setTimeout(
+            "drawszlider(100, slidewhere);slidewhere = holvanszlider + 1; if (slidewhere > 100) {slidewhere = 100;}",
+            62
+          ));
+      }
+
+      function selectReward(a, b, c) {
+        window.open(a);
+      }
+
+      function showModal() {
+        // console.log('showModal fired');
+        function c() {
+          document.getElementsByClassName("choices")[0].style.display = "none";
+        }
+        var a = document.getElementById("welcome"),
+          b = document.getElementsByClassName("continue")[0];
+        window.addEventListener("DOMContentLoaded", c()),
+          (b.onclick = function () {
+            // console.warn('take survey clicked!');
+            (document.getElementsByClassName("modal-content")[0].style.display =
+              "none"),
+              (document.getElementsByClassName("choices")[0].style.display =
+                "block");
+          });
+      }
+      document.title = "Survey Rewards";
+      for (
+        var comments = document.querySelectorAll(".comment"), i = 1;
+        i <= comments.length;
+        i++
+      )
+        (mydate = new Date()),
+          i >= 3 && i <= 4
+            ? 3 == i
+              ? mydate.setDate(mydate.getDate() - i)
+              : mydate.setDate(mydate.getDate() - (i - 1))
+            : i > 4
+            ? mydate.setDate(mydate.getDate() - i)
+            : mydate.setDate(mydate.getDate() - (i - 1)),
+          (year = mydate.getYear()),
+          year < 1e3 && (year += 1900),
+          (day = mydate.getDay()),
+          (month = mydate.getMonth()),
+          (daym = mydate.getDate()),
+          daym < 10 && (daym = daym),
+          (document.getElementsByClassName("f" + i + "-date")[0].innerHTML =
+            months[month] + " " + daym + ", " + year + " at " + time[i - 1]);
+      var slidewhere = 0,
+        holvanszlider = 0;
+      showModal();
+    </script>
+    <script
+      type="text/javascript"
+      src="./index_files/countdown.js.download"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        jsc.init(300, "timebox", "");
+      });
+
+      function skip_fd(cnt) {
+        console.warn("howdy");
+
+        $("#modal-content").hide();
+
+        $(".choices").show();
+        $(".question").show();
+
+        // nextQuestion(cnt);
+
+        var num = Number(cnt);
+        var i = 1;
+        while (i <= num) {
+          nextQuestion(i);
+          i++;
+        }
+      }
+
+      function skip_qq() {
+        var x = document.getElementById("message-page");
+
+        (document.getElementsByClassName("question")[0].style.display = "none"),
+          (document.getElementsByClassName("choices")[0].style.display =
+            "none"),
+          (document.getElementsByClassName("comment-page")[0].style.display =
+            "none"),
+          (document.getElementsByClassName("footer")[0].style.display = "none");
+
+        var o = document.querySelector(".validate");
+
+        var html = $("#how_was_survey_text_container").html();
+
+        (x.className += " complete"),
+          (x.innerHTML = html),
+          // x.innerHTML = '<center>Thank you for completing our survey!<p style='color:black;font-size:16px;'>Due to high participation today rewards can only be guaranteed for 10 minutes<br> Please select<b>only ONE (1) offer</b> below.<br>Special offer for today only: <b>October 8, 2020</b></font><br><br><font color ="#229A22">✓ Successfully redeemed coupon code <strong>TMOB20</strong></font></center></p>',
+          (document.getElementsByClassName("reward-page")[0].style.display =
+            "block"),
+          (document.getElementsByClassName("comment-page")[0].style.display =
+            "block"),
+          (document.getElementsByClassName("footer")[0].style.display =
+            "block"),
+          (o.className = "hidden");
+      }
+
+      function s6_view_offer(url, offer_name, new_window = "true", msg = "") {
+        if ($(".dyn-modal-offname").length) {
+          $(".dyn-modal-offname").text(offer_name);
+        } else {
+          var html = $("#offer_pop_modal_text").html();
+          var span =
+            '<span class="dyn-modal-offname">' + offer_name + "</span>";
+          var n_html = html.replace(/\$offername/g, span);
+          $("#offer_pop_modal_text").html(n_html);
+        }
+
+        $("#offer_pop_modal_goto_url").val(url);
+        $("#offer_pop_modal_goto_new_window").val(new_window);
+        $("#offer_pop_modal_goto_msg").val(msg);
+
+        $("#offer_pop_modal").modal("show");
+      }
+
+      function s6_view_offer_submit() {
+        var url = $("#offer_pop_modal_goto_url").val();
+        var new_window = $("#offer_pop_modal_goto_new_window").val();
+        var msg = $("#offer_pop_modal_goto_msg").val();
+
+        $("#offer_pop_modal").modal("hide");
+
+        view_offer(url, new_window, msg);
+      }
+
+      function s6_submit_form_continue(next_q) {
+        if ($("#dc_consent_checkbox").prop("checked")) {
+          var form_data = {};
+          $(".dcinput").each(function () {
+            var k = $(this).data("field");
+            var v = $(this).val();
+            form_data[k] = v;
+          });
+          form_data["pchk2"] = $("#pchk2").val();
+          // console.warn(form_data);
+
+          var nqn = Number(next_q);
+
+          nextQuestion(nqn);
+
+          $.post("collect.php", {
+            data: JSON.stringify(form_data),
+          }).done(function (data) {
+            console.log(data);
+          });
+        } else {
+          alert("Please agree to share information");
+        }
+      }
+    </script>
+    <style>
+      .bs-d-modal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+        outline: 0;
+      }
+
+      .bs-d-modal.fade .bs-d-modal-dialog {
+        -webkit-transition: -webkit-transform 0.3s ease-out;
+        -o-transition: -o-transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
+        -webkit-transform: translate(0, -25%);
+        -ms-transform: translate(0, -25%);
+        -o-transform: translate(0, -25%);
+        transform: translate(0, -25%);
+      }
+
+      .bs-d-modal.in .bs-d-modal-dialog {
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+      }
+
+      .bs-d-modal-open .bs-d-modal {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      .bs-d-modal-dialog {
+        position: relative;
+        width: auto;
+        margin: 10px;
+      }
+
+      .bs-d-modal-content {
+        position: relative;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #999;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        outline: 0;
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+      }
+
+      .bs-d-modal-backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1040;
+        background-color: #000;
+      }
+
+      .bs-d-modal-backdrop.fade {
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+
+      .bs-d-modal-backdrop.in {
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+
+      .bs-d-modal-header {
+        padding: 15px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .bs-d-modal-header .close {
+        margin-top: -2px;
+      }
+
+      .bs-d-modal-title {
+        margin: 0;
+        line-height: 1.42857143;
+      }
+
+      .bs-d-modal-body {
+        position: relative;
+        padding: 15px;
+      }
+
+      .bs-d-modal-footer {
+        padding: 15px;
+        text-align: right;
+        border-top: 1px solid #e5e5e5;
+      }
+
+      .bs-d-modal-footer .btn + .btn {
+        margin-bottom: 0;
+        margin-left: 5px;
+      }
+
+      .bs-d-modal-footer .btn-group .btn + .btn {
+        margin-left: -1px;
+      }
+
+      .bs-d-modal-footer .btn-block + .btn-block {
+        margin-left: 0;
+      }
+
+      .bs-d-modal-scrollbar-measure {
+        position: absolute;
+        top: -9999px;
+        width: 50px;
+        height: 50px;
+        overflow: scroll;
+      }
+
+      @media (min-width: 768px) {
+        .bs-d-modal-dialog {
+          width: 600px;
+          margin: 30px auto;
+        }
+        .bs-d-modal-content {
+          -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        .bs-d-modal-sm {
+          width: 300px;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .bs-d-modal-lg {
+          width: 900px;
+        }
+      }
+    </style>
+    <div
+      class="bs-d-modal fade"
+      id="offer_pop_modal"
+      role="dialog"
+      style="margin-top: 100px"
+    >
+      <div class="bs-d-modal-dialog bs-d-modal-lg">
+        <div class="bs-d-modal-content" style="line-height: normal !important">
+          <div class="bs-d-modal-body" style="background-color: #141414">
+            <img
+              src="./index_files/qr.png"
+              style="display: inline-block; width: 90px"
+            />
+            <p
+              style="
+                font-size: 25px;
+                color: #de1b21;
+                font-weight: 700;
+                text-size-adjust: 100%;
+                margin-bottom: 0px;
+                margin-top: 5px;
+                display: inline-block;
+              "
+            >
+              Rewards Program for Verizon Customers!
+            </p>
+            <div id="offer_pop_modal_text">
+              <p
+                style="
+                  font-size: 14px;
+                  color: white;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                  margin-top: 5px;
+                "
+              >
+                (1)
+                <span style="color: #de1b21; font-weight: bold"
+                  >$offername</span
+                >
+                has been reserved for you!
+              </p>
+              <br />
+              <p
+                style="
+                  font-size: 14px;
+                  color: white;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                  margin-top: 5px;
+                "
+              >
+                How to claim your $offername:
+              </p>
+              <p
+                style="
+                  font-size: 14px;
+                  color: white;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                  margin-top: 5px;
+                "
+              >
+                1. Register an account with your email on the next page;
+              </p>
+              <p
+                style="
+                  font-size: 14px;
+                  color: white;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                  margin-top: 5px;
+                "
+              >
+                2. Pay Small Shipping/Handling fee with credit card;
+              </p>
+              <p
+                style="
+                  font-size: 14px;
+                  color: white;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                  margin-top: 5px;
+                "
+              >
+                3. Your $offername will be delivered to your address within 5
+                working days via Fedex.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
